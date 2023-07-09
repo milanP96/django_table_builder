@@ -144,6 +144,7 @@ class TableCreator:
         return self.table_name.replace(' ', '').replace('_', '').lower()
 
     def build_project_state(self) -> ProjectState:
+        apps.clear_cache()
         app_models = {}
 
         for model in apps.get_models(include_swapped=True):
@@ -169,6 +170,11 @@ class TableCreator:
 
         if self.delete and app_models.get((self.app_label, self.name_lower())) is not None:
             del app_models[(self.app_label, self.name_lower())]
+
+        app_config = apps.get_app_config(self.app_label)
+
+        if self.delete and self.old_instance.lower_name() in app_config.models:
+            del app_config.models[self.old_instance.lower_name()]
 
         if app_models.get((self.app_label, self.name_lower())) is not None and not self.update and not self.delete:
             raise TableCreatorException('Model is already created')
