@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  server:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+    env_file:
+      - .env
+    command: sh -c "sleep 10 && python manage.py runserver 0.0.0.0:8000"
+
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=mydatabase
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    env_file:
+      - .env
