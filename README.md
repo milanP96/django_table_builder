@@ -9,4 +9,10 @@ You can see swagger documentation at /api/schema/swagger-ui/
 To use api you can you should autorize yourself, so need create superuser and get token and attach it to headers in form "Token xxxxxxx"
 
 
+### If you do not want to run it locally you can use api [here](http://164.90.176.230:8001/api/schema/swagger-ui/) where I created superuser for you with credentials:
+username: tester
+
+password: testerpassword
+
+
 
