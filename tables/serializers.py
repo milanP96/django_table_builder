@@ -34,7 +34,7 @@ class DynamicTableSerializer(ModelSerializer):
 
     class Meta:
         model = DynamicTable
-        fields = '__all__'
+        fields = ('pk', 'model_name', 'columns',)
 
     def create(self, validated_data):
         # Create migrations and new instance of dynamic model and store it

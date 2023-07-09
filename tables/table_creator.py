@@ -167,6 +167,9 @@ class TableCreator:
                     fields=self.create_fields()
                 )
 
+        if self.delete and app_models.get((self.app_label, self.name_lower())) is not None:
+            del app_models[(self.app_label, self.name_lower())]
+
         if app_models.get((self.app_label, self.name_lower())) is not None and not self.update and not self.delete:
             raise TableCreatorException('Model is already created')
 
