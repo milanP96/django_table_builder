@@ -4,7 +4,8 @@
 
 For this you will need .env file placed in root of project. Example (.env.example) you can see also in root
 
-You can see swagger documentation at /api/schema/swagger-ui/
+You can see swagger documentation at /api/schema/swagger-ui/ 
+there are a few more endpoints than requested in the task.
 
 To use api you can you should autorize yourself, so need create superuser and get token and attach it to headers in form "Token xxxxxxx"
 
