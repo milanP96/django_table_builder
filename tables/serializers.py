@@ -59,7 +59,7 @@ class DynamicTableSerializer(ModelSerializer):
     def update(self, instance, validated_data):
         """
         !!!ATTENTION!!!
-        For this test we will use simplier version of update without interacting with user
+        For this test we will use simpler version of update without interacting with user
         about rename fields and 'null' problem. So all fields will have also null=True and default=None
         And renaming models will result recreate tables
 
