@@ -57,10 +57,9 @@ class CreateRowView(APIView):
         table_creator.set_fields(dynamic_table.columns)
         model = table_creator.get_model_class()
 
-        instances = [model(**data) for data in serializer.validated_data['data']]
-
         try:
             # Perform bulk create
+            instances = [model(**data) for data in serializer.validated_data['data']]
             instances = model.objects.bulk_create(instances)
         except Exception as e:
             return Response(
